@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+{% if ticker %}
+<h4> {{ ticker }} </h4> 
+{% endif %}
+
+<br/>
+<br/>
+Welcome to our stock portfolio platform! We are thrilled to have you here and look forward to helping you navigate the world of investing.
+<br/><br/>
+Our platform is designed to provide you with easy access to real-time market data, company information, and portfolio management tools to help you make informed investment decisions. Whether you're a seasoned investor or just getting started, our user-friendly interface and comprehensive resources will help you stay on top of your investments.
+At our platform, we believe that everyone should have access to the tools and information they need to succeed in the stock market. That's why we are committed to providing you with the best possible user experience, and we are constantly working to improve and expand our services.
+<br/><br/>
+Thank you for choosing our platform, and we wish you all the best in your investing journey!
+<br/>
+<br/><br/>
+<h7>Copyright © 2023 Stock Portfolio Inc. All rights reserved.</h7>
+
+
+{% if api %}
+    {% if api == "Error..." %}
+        There was a problem with your ticker symbol, 
+        please try again...
+    {% else %}
+
+        <h1>{{ api.companyName }}</h1><br/>
+        <!-- <b>My Equity: 800</b><br/> -->
+        Price: {{ api.latestPrice }}<br/>
+        Market Cap: {{ api.marketCap }}<br/>
+        YTD change: {{ api.ytdChange }}<br/>
+        52Wk High: {{ api.week52High }}<br/>
+        52Wk Low: {{ api.week52Low }}<br/><br/>
+
+        <!-- {% for key, value in api.items %}
+            {{ key }}: {{ value }}<br/>
+        {% endfor %} -->
+    {% endif %}
+{% endif %}
+
+
+{% endblock %}
